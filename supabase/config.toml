@@ -1,0 +1,7 @@
+project_id = "ptxenyhuztiaexwdcecl"
+
+[functions.sitemap]
+verify_jwt = false
+
+[functions.meta-catalog]
+verify_jwt = false
