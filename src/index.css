@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* SolaimanLipi — global Bengali font */
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('https://cdn.jsdelivr.net/gh/maateen/bangla-web-fonts@master/fonts/SolaimanLipi/SolaimanLipi.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/maateen/bangla-web-fonts@master/fonts/SolaimanLipi/SolaimanLipi.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/maateen/bangla-web-fonts@master/fonts/SolaimanLipi/SolaimanLipi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0980-09FF, U+200C-200D, U+25CC;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 40% 96%;
+    --foreground: 22 51% 12%;
+
+    --card: 30 30% 94%;
+    --card-foreground: 22 51% 12%;
+
+    --popover: 30 40% 96%;
+    --popover-foreground: 22 51% 12%;
+
+    --primary: 22 51% 16%;
+    --primary-foreground: 38 60% 92%;
+
+    --secondary: 30 25% 88%;
+    --secondary-foreground: 22 51% 16%;
+
+    --muted: 30 20% 90%;
+    --muted-foreground: 22 20% 40%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 22 51% 10%;
+
+    --destructive: 350 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.5rem;
+
+    --gold: 38 92% 50%;
+    --gold-light: 38 80% 70%;
+    --gold-dark: 38 90% 38%;
+    --cream: 30 40% 96%;
+    --cream-dark: 30 25% 88%;
+    --chocolate: 22 51% 16%;
+    --chocolate-light: 22 35% 28%;
+    --strawberry: 350 80% 50%;
+    --strawberry-light: 350 70% 60%;
+
+    --sidebar-background: 22 51% 16%;
+    --sidebar-foreground: 38 60% 92%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 22 51% 10%;
+    --sidebar-accent: 22 35% 22%;
+    --sidebar-accent-foreground: 38 60% 92%;
+    --sidebar-border: 22 35% 22%;
+    --sidebar-ring: 38 92% 50%;
+  }
+
+  .dark {
+    --background: 22 51% 8%;
+    --foreground: 30 40% 92%;
+    --card: 22 45% 12%;
+    --card-foreground: 30 40% 92%;
+    --popover: 22 45% 12%;
+    --popover-foreground: 30 40% 92%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 22 51% 10%;
+    --secondary: 22 35% 18%;
+    --secondary-foreground: 30 40% 92%;
+    --muted: 22 30% 18%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 22 51% 10%;
+    --destructive: 350 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 22 30% 20%;
+    --input: 22 30% 20%;
+    --ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Force overflow visible on page transition wrappers so position:sticky works */
+  .page-transition-wrapper,
+  .page-transition-wrapper > * {
+    overflow: visible !important;
+  }
+
+  /* Premium tabular numbers using Montserrat globally */
+  .font-num {
+    font-family: 'Montserrat', 'Outfit', system-ui, sans-serif;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(38 92% 50%), hsl(38 80% 70%), hsl(38 92% 50%));
+  }
+
+  .bg-gradient-chocolate {
+    background: linear-gradient(135deg, hsl(22 51% 16%), hsl(22 35% 28%));
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(38 90% 38%), hsl(38 92% 50%), hsl(38 80% 70%));
+  }
+
+  .shadow-luxury {
+    box-shadow: 0 20px 60px -15px hsl(22 51% 16% / 0.25);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 10px 40px -10px hsl(38 92% 50% / 0.35);
+  }
+
+  /* Premium payment button */
+  .btn-premium-pay {
+    position: relative;
+    overflow: hidden;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+  }
+
+  .btn-premium-pay::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      hsl(38 92% 85% / 0.25) 45%,
+      hsl(38 92% 95% / 0.4) 50%,
+      hsl(38 92% 85% / 0.25) 55%,
+      transparent 60%
+    );
+    animation: shine-sweep 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .btn-premium-pay:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px -8px hsl(22 51% 16% / 0.4);
+  }
+
+  .btn-premium-pay:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px -4px hsl(22 51% 16% / 0.3);
+  }
+
+  .btn-premium-pay:disabled {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-premium-pay:disabled::after {
+    display: none;
+  }
+}
+
+@keyframes shine-sweep {
+  0%, 100% {
+    left: -75%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    left: 125%;
+    opacity: 0;
+  }
+  31%, 100% {
+    opacity: 0;
+    left: -75%;
+  }
+}
+
+/* Instagram gradient hover/active for mobile + desktop */
+.ig-hover {
+  background: transparent;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+.ig-hover:hover,
+.ig-hover:active {
+  background: linear-gradient(45deg, #fcb045, #fd1d1d, #833ab4) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
